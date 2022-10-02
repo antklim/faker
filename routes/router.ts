@@ -1,14 +1,24 @@
+import { Handler } from "https://deno.land/std@0.158.0/http/server.ts";
+import { notFoundHandler } from "./notFound.ts";
 import * as articlesRoute from "./articles/index.ts";
 
-export const notFoundHandler = (_req: Request): Response =>
-  new Response("Not Found", { status: 404 });
-
-export const handler = (req: Request): Response => {
-  const match = articlesRoute.pattern.exec(req.url);
-
-  if (match) {
-    return articlesRoute.handler(req);
+const match = (
+  rawUrl: string,
+  patterns: URLPattern[],
+): URLPatternResult | null => {
+  for (const p of patterns) {
+    const m = p.exec(rawUrl);
+    if (m) return m;
   }
 
-  return notFoundHandler(req);
+  return null;
+};
+
+export const handler: Handler = (req, connInfo) => {
+  const m = match(req.url, articlesRoute.patterns);
+  if (m) {
+    return articlesRoute.handler(m)(req, connInfo);
+  }
+
+  return notFoundHandler(req, connInfo);
 };
