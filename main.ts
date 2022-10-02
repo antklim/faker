@@ -1,8 +1,7 @@
-export function add(a: number, b: number): number {
-  return a + b;
-}
+import { app } from "./app.ts";
 
-// Learn more at https://deno.land/manual/examples/module_metadata#concepts
+const port = +(Deno.env.get("PORT") ?? 3000);
+
 if (import.meta.main) {
-  console.log("Add 2 + 3 =", add(2, 3));
+  app({ port });
 }
