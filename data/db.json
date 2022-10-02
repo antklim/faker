@@ -1,0 +1,14 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Hello World",
+      "author": "John Smith"
+    },
+    {
+      "id": 2,
+      "title": "Deno Programming",
+      "author": "Joe Doe"
+    }
+  ]
+}
