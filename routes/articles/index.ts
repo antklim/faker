@@ -33,8 +33,6 @@ const articleHandler = (id: string): Handler => {
 };
 
 export const handler = (match: URLPatternResult): Handler => {
-  console.log(match.pathname.input, match.pathname.groups);
-
   const articleId = match.pathname.groups.id;
   if (articleId) {
     return articleHandler(articleId);
