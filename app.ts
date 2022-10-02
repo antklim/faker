@@ -8,7 +8,8 @@ type App = (
   options?: Partial<AppOtions>,
 ) => void;
 
-const handler = (_req: Request): Response => new Response("Hello Deno!");
+const handler = (_req: Request): Response =>
+  new Response(`Hello Deno! at ${Date.now()}`);
 
 export const app: App = (options = {}) => {
   serve(handler, options);
