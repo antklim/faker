@@ -10,5 +10,15 @@
       "title": "Deno Programming",
       "author": "Joe Doe"
     }
+  ],
+  "authors": [
+    {
+      "id": 100,
+      "fullName": "John Smith"
+    },
+    {
+      "id": 200,
+      "fullName": "Joe Doe"
+    }
   ]
 }
