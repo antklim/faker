@@ -1,5 +1,4 @@
 import { Handler } from "https://deno.land/std@0.158.0/http/server.ts";
-import { notFoundHandler } from "./notFound.ts";
 import * as articlesRoute from "./articles/index.ts";
 
 const match = (
@@ -20,5 +19,5 @@ export const handler: Handler = (req, connInfo) => {
     return articlesRoute.handler(m)(req, connInfo);
   }
 
-  return notFoundHandler(req, connInfo);
+  return new Response("Welcome to Faker!");
 };
