@@ -1,2 +1,2 @@
 # faker
-Stub server in Deno
+Stub service in Deno
